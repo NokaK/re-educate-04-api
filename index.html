@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="button">click me</button>
+
+    <div id="user-list"></div>
+
+    <div>
+        <input type="text" id="firstName" placeholder="Enter your name">
+        <button id="addUser">add user</button>
+
+        <ul id="userName"></ul>
+    </div>
+
+
+
+    <script>
+        const button = document.getElementById('button')
+
+        // 1
+        button.addEventListener('click', () => {
+            button.remove()
+        })
+
+        // 2
+
+        const image = document.createElement('img')
+        image.setAttribute('src', 'https://i.ytimg.com/vi/VEx5hNYeZtY/hqdefault.jpg');
+        image.setAttribute('alt', 'image')
+
+        const body = document.getElementsByTagName('body')[0]
+        body.appendChild(image)
+
+
+        //3
+
+        const productData = [{ product_id: 1, amount: 200 }, { product_id: 2, amount: 300 }, { product_id: 3, amount: 500 }]
+
+        const getAmountSum = (data) => {
+            // let sum = 0;
+            // for (let index = 0; index < data.length; index++) {
+            //     const element = data[index];
+            //     sum = sum + element.amount
+            // }
+
+            const calcSum = data.reduce((acc, curr) => {
+                return acc + curr.amount
+            }, 0)
+
+            return calcSum
+            // return sum;
+
+        }
+
+        const sum = getAmountSum(productData)
+
+
+
+        //4
+
+        const userList = document.getElementById('user-list')
+        const users = [
+            {
+                id: 7,
+                email: "michael.lawson@reqres.in",
+                first_name: "Michael",
+                last_name: "Lawson",
+                avatar: "https://reqres.in/img/faces/7-image.jpg"
+            },
+            {
+                id: 8,
+                email: "lindsay.ferguson@reqres.in",
+                first_name: "Lindsay",
+                last_name: "Ferguson",
+                avatar: "https://reqres.in/img/faces/8-image.jpg"
+            },
+            {
+                id: 9,
+                email: "tobias.funke@reqres.in",
+                first_name: "Tobias",
+                last_name: "Funke",
+                avatar: "https://reqres.in/img/faces/9-image.jpg"
+            },
+            {
+                id: 10,
+                email: "byron.fields@reqres.in",
+                first_name: "Byron",
+                last_name: "Fields",
+                avatar: "https://reqres.in/img/faces/10-image.jpg"
+            },
+            {
+                id: 11,
+                email: "george.edwards@reqres.in",
+                first_name: "George",
+                last_name: "Edwards",
+                avatar: "https://reqres.in/img/faces/11-image.jpg"
+            },
+            {
+                id: 12,
+                email: "rachel.howell@reqres.in",
+                first_name: "Rachel",
+                last_name: "Howell",
+                avatar: "https://reqres.in/img/faces/12-image.jpg"
+            },
+
+        ];
+
+        for (let index = 0; index < users.length; index++) {
+            const element = users[index];
+            const userItem = document.createElement('div')
+            userItem.classList.add('user-card')
+
+            const avatar = document.createElement('img')
+            const avatarWrapper = document.createElement('div')
+
+            avatar.setAttribute('src', element.avatar)
+            avatar.setAttribute('alt', `${element.first_name} ${element.last_name}`)
+            avatar.classList.add('image')
+
+            const fullName = document.createElement('p')
+            fullName.textContent = `${element.first_name} ${element.last_name}`
+
+
+            avatarWrapper.classList.add('avatar-wrapper')
+
+            avatarWrapper.appendChild(avatar)
+
+
+            userItem.appendChild(avatarWrapper)
+            userItem.appendChild(fullName)
+            userList.appendChild(userItem)
+        }
+
+
+        //5
+        const input = document.getElementById('firstName')
+
+        const addUserButton = document.getElementById('addUser')
+        const userNameInfo = document.getElementById('userName')
+
+
+        let userNames = []
+
+        const addItem = () => {
+
+            userNames.push(input.value)
+
+            for (let index = 0; index < userNames.length; index++) {
+                if (index === userNames.length - 1) {
+                    const element = userNames[index];
+                    const li = document.createElement('li')
+                    li.textContent = element
+
+                    userNameInfo.appendChild(li)
+
+
+                }
+
+
+            }
+            console.log(userNames)
+        }
+
+
+        addUserButton.addEventListener('click', addItem)
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

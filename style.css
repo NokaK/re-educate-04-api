@@ -1,0 +1,23 @@
+.user-card {
+  background-color: darkgoldenrod;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#user-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+}
+
+.avatar-wrapper {
+  height: 100px;
+  width: 100px;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
